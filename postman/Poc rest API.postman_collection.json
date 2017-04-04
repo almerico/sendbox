@@ -1,0 +1,180 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Poc rest API",
+		"_postman_id": "390f588e-20f0-557e-1090-f9a08d576933",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Identity",
+			"description": "",
+			"item": [
+				{
+					"name": "getUser",
+					"request": {
+						"url": "http://localhost:8080/api/identity/users/john",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"url": "http://localhost:8080/api/identity/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\" : \"john\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@acme.org\",\n  \"password\": \"any\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"url": "http://localhost:8080/api/identity/users?page=0&size=1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Repository",
+			"description": "",
+			"item": [
+				{
+					"name": "getProcesses",
+					"request": {
+						"url": "http://localhost:8080/api/repository/process-definitions?page=0&size=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "runtime",
+			"description": "",
+			"item": [
+				{
+					"name": "getProcessInstances",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/process-instances?page=1&size=2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "startProcess",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/process-instances",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"processDefinitionKey\": \"hireProcess\",\n  \"variables\": {\n    \"applicantName\": \"Pedro Silva\",\n    \"email\": \"pedro.silva@alfresco.com\",\n    \"phoneNumber\": \"1234567\"\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getProcessVariables",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/process-instances/8/variables",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getTasks",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/tasks?page=2&size=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getTask",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/tasks/16",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "claimTask",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/tasks/16/claim?assignee=john",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "completeTask",
+					"request": {
+						"url": "http://localhost:8080/api/runtime/tasks/16/complete",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"telephoneInterviewOutcome\": true\n  }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
